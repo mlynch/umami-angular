@@ -3,5 +3,46 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "umami-components": {
+      "projectType": "library",
+      "root": "projects/umami-components",
+      "sourceRoot": "projects/umami-components/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/umami-components/tsconfig.lib.json",
+            "project": "projects/umami-components/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/umami-components/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/umami-components/src/test.ts",
+            "tsConfig": "projects/umami-components/tsconfig.spec.json",
+            "karmaConfig": "projects/umami-components/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/umami-components/tsconfig.lib.json",
+              "projects/umami-components/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "umami-components"
 }
